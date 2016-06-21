@@ -1,5 +1,6 @@
 <?php echo $this->Form->create('User',array('class'=>'form-signin','inputDefaults'=>array())); ?>
 <div class="login-container">
+	<h2 class="form-signin-heading">Please log in</h2>
 	<div class="controls">
 		<div>
 		<?php echo $this->Form->input('username',array('div'=>false,'label'=>false,'placeholder'=>'Tài khoản',"class"=>"form-control username"));?>

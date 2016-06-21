@@ -7,12 +7,12 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class EmployeesController extends AppController {
-	public function beforeFilter(){
-		parent::beforeFilter();
-		$this->Auth->allow('index', 'view');
-	}
-	var $theme = "Admin";
-	var $layout = "index";
+var $theme="Admin";
+var $layout="index";
+public function beforeFilter(){
+	parent::beforeFilter();
+	$this->Auth->allow('index', 'view');
+}
 /**
  * Components
  *
@@ -26,9 +26,7 @@ class EmployeesController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->loadModel('Department');
 		$this->Employee->recursive = 0;
-		$this->set('departments',$this->Department->find('list'));
 		$this->set('employees', $this->Paginator->paginate());
 	}
 
@@ -62,6 +60,8 @@ class EmployeesController extends AppController {
 				$this->Flash->error(__('The employee could not be saved. Please, try again.'));
 			}
 		}
+		$departments = $this->Employee->Department->find('list');
+		$this->set(compact('departments'));
 	}
 
 /**
@@ -86,6 +86,8 @@ class EmployeesController extends AppController {
 			$options = array('conditions' => array('Employee.' . $this->Employee->primaryKey => $id));
 			$this->request->data = $this->Employee->find('first', $options);
 		}
+		$departments = $this->Employee->Department->find('list');
+		$this->set(compact('departments'));
 	}
 
 /**

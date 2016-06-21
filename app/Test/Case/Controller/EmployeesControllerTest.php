@@ -12,7 +12,8 @@ class EmployeesControllerTest extends ControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.employee'
+		'app.employee',
+		'app.departments'
 	);
 
 /**

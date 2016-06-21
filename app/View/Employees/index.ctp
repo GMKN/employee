@@ -25,6 +25,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('#'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
+			<th><?php echo $this->Paginator->sort('department_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('photo'); ?></th>
 			<th><?php echo $this->Paginator->sort('job_title'); ?></th>
 			<th><?php echo $this->Paginator->sort('cellphone'); ?></th>
@@ -38,7 +39,8 @@
 	<?php foreach ($employees as $employee): ?>
 	<tr>
 		<td><?php echo h($employee['Employee']['id']); ?>&nbsp;</td>
-		<td><?php echo $this->Html->link(__(h($employee['Employee']['name'])), array('action' => 'view', $employee['Employee']['id'])); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link(__(h($employee['Employee']['name'])), array('action' => 'view', $employee['Employee']['id'])); ?></td>
+		<td><?php echo $this->Html->link(__(h($employee['Department']['name'])), array('controller'=>'departments', 'action' => 'view', $employee['Department']['id'])); ?></td>
 		<td><?php echo h($employee['Employee']['photo']); ?>&nbsp;</td>
 		<td><?php echo h($employee['Employee']['job_title']); ?>&nbsp;</td>
 		<td><?php echo h($employee['Employee']['cellphone']); ?>&nbsp;</td>

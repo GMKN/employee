@@ -7,12 +7,12 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class DepartmentsController extends AppController {
-	public function beforeFilter(){
-		parent::beforeFilter();
-		$this->Auth->allow('index', 'view');
-	}
-	var $theme = "Admin";
-	var $layout = "index";
+var $theme = 'Admin';
+var $layout = 'index';
+public function beforeFilter(){
+	parent::beforeFilter();
+	$this->Auth->allow('index', 'view');
+}
 /**
  * Components
  *

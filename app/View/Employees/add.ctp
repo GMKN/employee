@@ -1,21 +1,27 @@
-<div class="employees form">
-<?php echo $this->Form->create('Employee'); ?>
-	<fieldset>
-		<legend><?php echo __('Add Employee'); ?></legend>
-	<?php
-		echo $this->Form->input('name');
-		echo $this->Form->input('photo');
-		echo $this->Form->input('job_title');
-		echo $this->Form->input('cellphone');
-		echo $this->Form->input('email');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Employees'), array('action' => 'index')); ?></li>
 	</ul>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Edit Employee</h3>
+	</div>
+	<div class="panel-body">
+		<?php echo $this->Form->create('Employee'); ?>
+	<fieldset>
+		<legend><?php echo __('Add Employee'); ?></legend>
+			<?php
+				echo $this->Form->input('name');
+				echo $this->Form->input('department_id');
+				echo $this->Form->input('photo');
+				echo $this->Form->input('job_title');
+				echo $this->Form->input('cellphone');
+				echo $this->Form->input('email');
+			?>
+			</fieldset>
+		<?php echo $this->Form->end(__('Submit')); ?>
+	</div>
 </div>

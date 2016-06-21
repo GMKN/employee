@@ -1,14 +1,13 @@
+#page-wrap{
+	margin-top: 100px;
+}
 .form-signin{
 	max-width: 330px;
 	margin: 0px auto;
-	margin-top: 200px;
 }
 .form-control{
 	height: 50px;
 }
 .btn.btn-lg.btn-primary.btn-block{
 	margin-top: 20px;
-}
-.index{
-	margin-top: 100px;
 }

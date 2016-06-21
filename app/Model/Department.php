@@ -3,6 +3,8 @@ App::uses('AppModel', 'Model');
 /**
  * Department Model
  *
+ * @property Employee $Employee
+ * @property Employee $Employee
  */
 class Department extends AppModel {
 
@@ -32,7 +34,7 @@ class Department extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'manager' => array(
+		'employee_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -43,4 +45,43 @@ class Department extends AppModel {
 			),
 		),
 	);
+
+	// The Associations below have been created with all possible keys, those that are not needed can be removed
+
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'Employee' => array(
+			'className' => 'Employee',
+			'foreignKey' => 'employee_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Employee' => array(
+			'className' => 'Employee',
+			'foreignKey' => 'department_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
 }
