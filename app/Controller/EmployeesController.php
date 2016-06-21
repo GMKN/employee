@@ -7,7 +7,12 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class EmployeesController extends AppController {
-
+	public function beforeFilter(){
+		parent::beforeFilter();
+		$this->Auth->allow('index', 'view');
+	}
+	var $theme = "Admin";
+	var $layout = "index";
 /**
  * Components
  *
@@ -21,7 +26,9 @@ class EmployeesController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->loadModel('Department');
 		$this->Employee->recursive = 0;
+		$this->set('departments',$this->Department->find('list'));
 		$this->set('employees', $this->Paginator->paginate());
 	}
 
