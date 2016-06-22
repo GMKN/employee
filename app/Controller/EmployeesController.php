@@ -25,8 +25,26 @@ public function beforeFilter(){
  *
  * @return void
  */
-	public function index() {
+	public function index($id = null) {
 		$this->Employee->recursive = 0;
+		$this->loadmodel('Department');
+		$this->set('options', $this->Department->find('list'));
+		if ($id) {
+			$this->Paginator->settings = array(
+		        'conditions' => array('Employee.department_id' => $id),
+		        'limit' => 10
+		    );
+		}
+		if ($this->request->is('post')) {
+			$name = $this->request->data['Search']['name'];
+			$id = $this->request->data['Search']['department_id'];
+			if($name !='' || $id != ''){
+				$this->Paginator->settings = array(
+			        'conditions' => array('Employee.department_id' => $id, 'Employee.name LIKE' => '%'.$name.'%'),
+			        'limit' => 10
+			    );
+			}
+		}
 		$this->set('employees', $this->Paginator->paginate());
 	}
 
@@ -52,6 +70,19 @@ public function beforeFilter(){
  */
 	public function add() {
 		if ($this->request->is('post')) {
+
+			// $filename = "app/webroot/files/".$this->data['Employee']['photo']['name']; 
+			// /* copy uploaded file */
+			// if (move_uploaded_file($this->data['Employee']['photo']['tmp_name'],$filename)) {
+			// /* save message to session */
+			// $this->Session->setFlash('File uploaded successfuly. You can view it <a href="/app/webroot/files/'.$this->data['Employee']['photo']['name'].'">here</a>.');
+			// /* redirect */
+			// $this->redirect(array('action' => 'index'));
+			// } else {
+			// /* save message to session */
+			// $this->Session->setFlash('There was a problem uploading file. Please try again.');
+			// }
+			////////////
 			$this->Employee->create();
 			if ($this->Employee->save($this->request->data)) {
 				$this->Flash->success(__('The employee has been saved.'));

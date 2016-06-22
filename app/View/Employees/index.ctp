@@ -7,26 +7,36 @@
 		</div>
 	</div>
 	<?php } ?>
-	<!-- <div class="panel panel-success">
+	<div class="search panel panel-success">
 		<div class="panel-heading">
 			<h2 class="panel-title">
 				Search
 			</h2>
 		</div>
 		<div class="panel-body">
-			<?php echo $this->Form->create('User',array('class'=>'form','inputDefaults'=>array())); ?>
-			<?php echo $this->Form->input('username',array('div'=>false,'label'=>false,'placeholder'=>'Employee Name','class'=>'form-control'));?>
-			<?php echo $this->Form->submit('Search',array('class'=>'btn btn-success')); ?>
-			<?php echo $this->Form->end();?>
+			<?php echo $this->Form->create('Search',array('class'=>'form','inputDefaults'=>array()));
+			echo $this->Form->input('name',array('div'=>false,'label'=>false,'placeholder'=>'Employee Name','class'=>'form-control'));
+			echo $this->Form->input('department_id', array(
+                	'type' => 'select',
+					'options' => $options, // typically set from $this->find('list') in controller 
+					'label'=> false,
+					'empty'=> "Department",
+					'selected'=> 0,
+					'escape' => false,  // prevent HTML being automatically escaped
+					'error' => false,
+					'class' => 'form-control'
+				));
+			echo $this->Form->submit('Search',array('class'=>'button btn btn-success'));
+			echo $this->Form->button('Clear', array('type' => 'reset', 'class'=>'button btn btn-default'));
+			echo $this->Form->end();?>
 		</div>
-	</div> -->
+	</div>
 	<table cellpadding="0" cellspacing="0" class="table table-striped">
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('#'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('department_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('photo'); ?></th>
 			<th><?php echo $this->Paginator->sort('job_title'); ?></th>
 			<th><?php echo $this->Paginator->sort('cellphone'); ?></th>
 			<th><?php echo $this->Paginator->sort('email'); ?></th>
@@ -41,7 +51,6 @@
 		<td><?php echo h($employee['Employee']['id']); ?>&nbsp;</td>
 		<td><?php echo $this->Html->link(__(h($employee['Employee']['name'])), array('action' => 'view', $employee['Employee']['id'])); ?></td>
 		<td><?php echo $this->Html->link(__(h($employee['Department']['name'])), array('controller'=>'departments', 'action' => 'view', $employee['Department']['id'])); ?></td>
-		<td><?php echo h($employee['Employee']['photo']); ?>&nbsp;</td>
 		<td><?php echo h($employee['Employee']['job_title']); ?>&nbsp;</td>
 		<td><?php echo h($employee['Employee']['cellphone']); ?>&nbsp;</td>
 		<td><?php echo h($employee['Employee']['email']); ?>&nbsp;</td>

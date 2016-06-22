@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
+  <div class="container">
     <div class="navbar-header">
       <?php echo $this->Html->link('Employee Directory',array('controller'=>'employees', 'action'=>'index'), array('class'=>'navbar-brand')) ?>
     </div>

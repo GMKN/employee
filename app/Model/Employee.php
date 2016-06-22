@@ -4,6 +4,7 @@ App::uses('AppModel', 'Model');
  * Employee Model
  *
  * @property Department $Department
+ * @property Department $Department
  */
 class Employee extends AppModel {
 
@@ -91,4 +92,26 @@ class Employee extends AppModel {
 			'order' => ''
 		)
 	);
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Department' => array(
+			'className' => 'Department',
+			'foreignKey' => 'employee_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
 }

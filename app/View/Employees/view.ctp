@@ -1,52 +1,33 @@
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Employee'), array('action' => 'edit', $employee['Employee']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Employee'), array('action' => 'delete', $employee['Employee']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $employee['Employee']['id']))); ?> </li>
-		<li><?php echo $this->Html->link(__('List Employees'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Employee'), array('action' => 'add')); ?> </li>
-	</ul>
-</div>
-<div class="panel panel-primary">
-	<div class="panel-heading">
-		<h3 class="panel-title">Employee</h3>
-	</div>
-	<div class="panel-body">
-		<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($employee['Employee']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Name'); ?></dt>
-		<dd>
-			<?php echo h($employee['Employee']['name']); ?>
-			&nbsp;
-		</dd>
-		<dd>
-			<?php echo h($employee['Department']['name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Photo'); ?></dt>
-		<dd>
-			<?php echo h($employee['Employee']['photo']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Job Title'); ?></dt>
-		<dd>
-			<?php echo h($employee['Employee']['job_title']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Cellphone'); ?></dt>
-		<dd>
-			<?php echo h($employee['Employee']['cellphone']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Email'); ?></dt>
-		<dd>
-			<?php echo h($employee['Employee']['email']); ?>
-			&nbsp;
-		</dd>
-	</dl>
-	</div>
-</div>
+<table cellpadding="0" cellspacing="0" class="table table-striped">
+	<tbody>
+		<tr>
+			<td><b><?php echo __('Id'); ?></b></td>
+			<td><?php echo h($employee['Employee']['id']); ?></td>
+		</tr>
+		<tr>
+			<td><b><?php echo __('Name'); ?></b></td>
+			<td><?php echo h($employee['Employee']['name']); ?></td>
+		</tr>
+		<tr>
+			<td><b><?php echo __('Manager'); ?></b></td>
+			<td><?php echo h($employee['Department']['name']); ?></td>
+		</tr>
+		<tr>
+			<td><b><?php echo __('Photo'); ?></b></td>
+			<td><?php echo h($employee['Employee']['photo']); ?></td>
+		</tr>
+		<tr>
+			<td><b><?php echo __('Job Title'); ?></b></td>
+			<td><?php echo h($employee['Employee']['job_title']); ?></td>
+		</tr>
+		<tr>
+			<td><b><?php echo __('Cellphone'); ?></b></td>
+			<td><?php echo h($employee['Employee']['cellphone']); ?></td>
+		</tr>
+		<tr>
+			<td><b><?php echo __('Email'); ?></b></td>
+			<td><?php echo h($employee['Employee']['email']); ?></td>
+		</tr>
+	</tbody>
+</table>
+<?php echo $this->Html->link(__('Back'), array('action' => 'index'), array('class'=>'button btn btn-info')); ?>

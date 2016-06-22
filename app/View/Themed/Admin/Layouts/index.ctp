@@ -3,23 +3,30 @@
 <head>
     <?php echo $this->element('head') ?>
 </head>
-<body onload="hide_preloader();" class="home">
-<!-- Page wrap -->
-<div id="page-wrap">
+<body class="home">
+<!-- Wrapper -->
+<div class="wrapper">
     <!-- Header -->
-    <div class="container">
-        <?php echo $this->element('menu') ?>
+    <div class="header">
+        <div class="container">
+            <?php echo $this->element('menu') ?>
+        </div>    
     </div>
     <!-- End / Header -->
-    <div class="container">
-        <?php echo $this->fetch('content') ?>
+    <!-- Content -->
+    <div class="content">
+        <div class="container">
+            <?php echo $this->Flash->render(); ?>
+            <?php echo $this->fetch('content') ?>
+        </div>    
     </div>
+    <!-- End / Content -->
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <?php echo $this->element('footer') ?>
     </footer>
     <!-- End / Footer -->
 </div>
-<!-- End / Page wrap -->
+<!-- End / Wrapper -->
 </body>
 </html>

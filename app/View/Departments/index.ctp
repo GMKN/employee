@@ -13,7 +13,7 @@
 			<th><?php echo $this->Paginator->sort('#'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('office_phone'); ?></th>
-			<th><?php echo $this->Paginator->sort('employee_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('employee_id', 'Manager'); ?></th>
 			<?php if(isset($userlogin)){ ?>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 			<?php } ?>
@@ -28,7 +28,7 @@
 		<td><?php echo $this->Html->link(__(h($department['Employee']['name'])), array('controller'=>'employees', 'action' => 'view', $department['Employee']['id'])); ?></td>
 		<?php if(isset($userlogin)){ ?>
 			<td class="actions">
-				<?php echo $this->Html->link(__('Employees'), array('action' => 'view', $department['Department']['id']), array('class'=>'button btn btn-info')); ?>
+				<?php echo $this->Html->link(__('Employees'), array('controller'=>'employees', 'action' => 'index', $department['Department']['id']), array('class'=>'button btn btn-info')); ?>
 				<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $department['Department']['id']), array('class'=>'button btn btn-success')); ?>
 				<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $department['Department']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $department['Department']['id']), 'class'=>'button btn btn-danger')); ?>
 			</td>
