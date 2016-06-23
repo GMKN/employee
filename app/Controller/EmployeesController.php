@@ -29,34 +29,24 @@ public function beforeFilter(){
         $this->Employee->recursive = 0;
         $this->loadmodel('Department');
         $this->set('options', $this->Department->find('list'));
+        $conditions = [];
         if ($id) {
-            $this->Paginator->settings = array(
-                'conditions' => array('Employee.department_id' => $id),
-                'limit' => 10
-            );
+            $conditions = ['Employee.department_id' => $id];
         }
         if ($this->request->is('post')) {
-            $name = $this->request->data['Search']['name'];
-            $id = $this->request->data['Search']['department_id'];
-            if($name !='' && $id != ''){
-                $this->Paginator->settings = array(
-                    'conditions' => array('Employee.department_id' => $id, 'Employee.name LIKE' => '%'.$name.'%'),
-                    'limit' => 10
-                );
+            $search_name    = $this->request->data['Search']['name'];
+            $search_dept_id = $this->request->data['Search']['department_id'];
+            if ($search_dept_id) {
+                $conditions['Employee.department_id'] = $search_dept_id;
             }
-            if($name =='' && $id != ''){
-                $this->Paginator->settings = array(
-                    'conditions' => array('Employee.department_id' => $id),
-                    'limit' => 10
-                );
-            }
-            if($name !='' && $id == ''){
-                $this->Paginator->settings = array(
-                    'conditions' => array('Employee.name LIKE' => '%'.$name.'%'),
-                    'limit' => 10
-                );
+            if ($search_name) {
+                $conditions['Employee.name LIKE'] = '%'.$search_name.'%';
             }
         }
+        $this->Paginator->settings = array(
+            'conditions' => $conditions,
+            'limit'      => 10
+        );
         $this->set('employees', $this->Paginator->paginate());
     }
 
