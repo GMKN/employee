@@ -1,12 +1,12 @@
 <div class="employees index">
 	<h2><?php echo __('Employees'); ?></h2>
-	<?php if(isset($userlogin)){ ?>
+	<?php if(isset($userlogin)): ?>
 	<div class="panel panel-primary">
 		<div class="panel-body">
 			<?php echo $this->Html->link(__('Add Employee'), array('action' => 'add'), array('class'=>'button btn btn-success')); ?>
 		</div>
 	</div>
-	<?php } ?>
+	<?php endif ?>
 	<div class="search panel panel-success">
 		<div class="panel-heading">
 			<h2 class="panel-title">
@@ -21,7 +21,6 @@
 					'options' => $options, // typically set from $this->find('list') in controller 
 					'label'=> false,
 					'empty'=> "Department",
-					'selected'=> 0,
 					'escape' => false,  // prevent HTML being automatically escaped
 					'error' => false,
 					'class' => 'form-control'
@@ -40,9 +39,9 @@
 			<th><?php echo $this->Paginator->sort('job_title'); ?></th>
 			<th><?php echo $this->Paginator->sort('cellphone'); ?></th>
 			<th><?php echo $this->Paginator->sort('email'); ?></th>
-			<?php if(isset($userlogin)){ ?>
+			<?php if(isset($userlogin)): ?>
 			<th class="actions"><?php echo __('Actions'); ?></th>
-			<?php } ?>
+			<?php endif ?>
 	</tr>
 	</thead>
 	<tbody>
@@ -54,12 +53,12 @@
 		<td><?php echo h($employee['Employee']['job_title']); ?>&nbsp;</td>
 		<td><?php echo h($employee['Employee']['cellphone']); ?>&nbsp;</td>
 		<td><?php echo h($employee['Employee']['email']); ?>&nbsp;</td>
-		<?php if(isset($userlogin)){ ?>
+		<?php if(isset($userlogin)): ?>
 		<td class="actions">
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $employee['Employee']['id']), array('class'=>'button btn btn-success')); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $employee['Employee']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $employee['Employee']['id']), 'class'=>'button btn btn-danger')); ?>
 		</td>
-		<?php } ?>
+		<?php endif ?>
 	</tr>
 <?php endforeach; ?>
 	</tbody>
