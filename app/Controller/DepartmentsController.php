@@ -99,17 +99,17 @@ public function beforeFilter(){
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
-		$this->Department->id = $id;
-		if (!$this->Department->exists()) {
-			throw new NotFoundException(__('Invalid department'));
-		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->Department->delete()) {
-			$this->Flash->success(__('The department has been deleted.'));
-		} else {
-			$this->Flash->error(__('The department could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(array('action' => 'index'));
-	}
+    public function delete($id = null) {
+        $this->Department->id = $id;
+        if (!$this->Department->exists()) {
+            throw new NotFoundException(__('Invalid department'));
+        }
+        $this->request->allowMethod('post', 'delete');
+        if ($this->Department->delete()) {
+            $this->Flash->success(__('The department has been deleted.'));
+        } else {
+            $this->Flash->error(__('The department could not be deleted. Please, try again.'));
+        }
+        return $this->redirect(array('action' => 'index'));
+    }
 }
