@@ -26,9 +26,9 @@ public function beforeFilter(){
  * @return void
  */
 	public function index() {
-		$this->Department->recursive = 0;
-		$this->set('departments', $this->Paginator->paginate());
-	}
+        $this->Department->recursive = 0;
+        $this->set('departments', $this->Paginator->paginate());
+    }
 
 /**
  * view method
