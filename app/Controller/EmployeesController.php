@@ -67,13 +67,13 @@ public function beforeFilter(){
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
-		if (!$this->Employee->exists($id)) {
-			throw new NotFoundException(__('Invalid employee'));
-		}
-		$options = array('conditions' => array('Employee.' . $this->Employee->primaryKey => $id));
-		$this->set('employee', $this->Employee->find('first', $options));
-	}
+    public function view($id = null) {
+        if (!$this->Employee->exists($id)) {
+            throw new NotFoundException(__('Invalid employee'));
+        }
+        $options = array('conditions' => array('Employee.' . $this->Employee->primaryKey => $id));
+        $this->set('employee', $this->Employee->find('first', $options));
+    }
 
 /**
  * add method
