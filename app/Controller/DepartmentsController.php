@@ -71,26 +71,26 @@ public function beforeFilter(){
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
-		if (!$this->Department->exists($id)) {
-			throw new NotFoundException(__('Invalid department'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Department->save($this->request->data)) {
-				$this->Flash->success(__('The department has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Flash->error(__('The department could not be saved. Please, try again.'));
-			}
-		} else {
-			$this->loadmodel('Employee');
-			$this->set('options', $this->Employee->find('list'));
-			$options = array('conditions' => array('Department.' . $this->Department->primaryKey => $id));
-			$manager = $this->Department->find('first', $options);
-			$this->set('manager',$manager['Department']['employee_id']);
-			$this->request->data = $this->Department->find('first', $options);
-		}
-	}
+    public function edit($id = null) {
+        if (!$this->Department->exists($id)) {
+            throw new NotFoundException(__('Invalid department'));
+        }
+        if ($this->request->is(array('post', 'put'))) {
+            if ($this->Department->save($this->request->data)) {
+                $this->Flash->success(__('The department has been saved.'));
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Flash->error(__('The department could not be saved. Please, try again.'));
+            }
+        } else {
+            $this->loadmodel('Employee');
+            $this->set('options', $this->Employee->find('list'));
+            $options = array('conditions' => array('Department.' . $this->Department->primaryKey => $id));
+            $manager = $this->Department->find('first', $options);
+            $this->set('manager',$manager['Department']['employee_id']);
+            $this->request->data = $this->Department->find('first', $options);
+        }
+    }
 
 /**
  * delete method
