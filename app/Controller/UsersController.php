@@ -100,28 +100,28 @@ class UsersController extends AppController {
             $this->Flash->error(__('The user could not be deleted. Please, try again.'));
         }
         return $this->redirect(array('action' => 'index'));
-    }
+    dede}
 
 //login--logout
-	public function beforeFilter() {
-		parent::beforeFilter();
-		$this->Auth->allow('login'); // Letting users register themselves
-	}
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('login'); // Letting users register themselves
+    }
 
-	public function login() {
-		$this->theme="Admin";
-		$this->layout="index";
-		if ($this->request->is('post') && !empty($this->request->data)) {
-			if ($this->Auth->login()) {
-				$this->redirect(array('controller'=>'employees','action' => 'index'));
-			}else{
-				$this->logout();
-			}
-		}
-	}
-	public function logout() {
-		if ($this->Auth->logout()) {
-			$this->redirect(array('controller'=>'users','action' => 'login'));
-		}
-	}
+    public function login() {
+        $this->theme="Admin";
+        $this->layout="index";
+        if ($this->request->is('post') && !empty($this->request->data)) {
+            if ($this->Auth->login()) {
+                $this->redirect(array('controller'=>'employees','action' => 'index'));
+            }else{
+                $this->logout();
+            }
+        }
+    }
+    public function logout() {
+        if ($this->Auth->logout()) {
+            $this->redirect(array('controller'=>'users','action' => 'login'));
+        }
+    }
 }
