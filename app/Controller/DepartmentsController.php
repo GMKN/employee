@@ -37,13 +37,13 @@ public function beforeFilter(){
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
-		if (!$this->Department->exists($id)) {
-			throw new NotFoundException(__('Invalid department'));
-		}
-		$options = array('conditions' => array('Department.' . $this->Department->primaryKey => $id));
-		$this->set('department', $this->Department->find('first', $options));
-	}
+    public function view($id = null) {
+        if (!$this->Department->exists($id)) {
+            throw new NotFoundException(__('Invalid department'));
+        }
+        $options = array('conditions' => array('Department.' . $this->Department->primaryKey => $id));
+        $this->set('department', $this->Department->find('first', $options));
+    }
 
 /**
  * add method
