@@ -105,28 +105,28 @@ public function beforeFilter(){
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
-		if (!$this->Employee->exists($id)) {
-			throw new NotFoundException(__('Invalid employee'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			$filename = $_SERVER['DOCUMENT_ROOT']."/employee/app/webroot/img/".$this->data['Employee']['photo']['name'];
-			if (move_uploaded_file($this->data['Employee']['photo']['tmp_name'],$filename)) {
-				$this->request->data['Employee']['photo'] = $this->data['Employee']['photo']['name'];
-				if ($this->Employee->save($this->request->data)) {
-					$this->Flash->success(__('The employee has been saved.'));
-					return $this->redirect(array('action' => 'index'));
-				} else {
-					$this->Flash->error(__('The employee could not be saved. Please, try again.'));
-				}
-			}
-		} else {
-			$options = array('conditions' => array('Employee.' . $this->Employee->primaryKey => $id));
-			$this->request->data = $this->Employee->find('first', $options);
-		}
-		$departments = $this->Employee->Department->find('list');
-		$this->set(compact('departments'));
-	}
+    public function edit($id = null) {
+        if (!$this->Employee->exists($id)) {
+            throw new NotFoundException(__('Invalid employee'));
+        }
+        if ($this->request->is(array('post', 'put'))) {
+            $filename = $_SERVER['DOCUMENT_ROOT']."/employee/app/webroot/img/".$this->data['Employee']['photo']['name'];
+            if (move_uploaded_file($this->data['Employee']['photo']['tmp_name'],$filename)) {
+                $this->request->data['Employee']['photo'] = $this->data['Employee']['photo']['name'];
+                if ($this->Employee->save($this->request->data)) {
+                    $this->Flash->success(__('The employee has been saved.'));
+                    return $this->redirect(array('action' => 'index'));
+                } else {
+                    $this->Flash->error(__('The employee could not be saved. Please, try again.'));
+                }
+            }
+        } else {
+            $options = array('conditions' => array('Employee.' . $this->Employee->primaryKey => $id));
+            $this->request->data = $this->Employee->find('first', $options);
+        }
+        $departments = $this->Employee->Department->find('list');
+        $this->set(compact('departments'));
+    }
 
 /**
  * delete method
