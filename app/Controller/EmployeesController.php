@@ -135,17 +135,17 @@ public function beforeFilter(){
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
-		$this->Employee->id = $id;
-		if (!$this->Employee->exists()) {
-			throw new NotFoundException(__('Invalid employee'));
-		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->Employee->delete()) {
-			$this->Flash->success(__('The employee has been deleted.'));
-		} else {
-			$this->Flash->error(__('The employee could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(array('action' => 'index'));
-	}
+    public function delete($id = null) {
+        $this->Employee->id = $id;
+        if (!$this->Employee->exists()) {
+            throw new NotFoundException(__('Invalid employee'));
+        }
+        $this->request->allowMethod('post', 'delete');
+        if ($this->Employee->delete()) {
+        $this->Flash->success(__('The employee has been deleted.'));
+        } else {
+            $this->Flash->error(__('The employee could not be deleted. Please, try again.'));
+        }
+        return $this->redirect(array('action' => 'index'));
+    }
 }
